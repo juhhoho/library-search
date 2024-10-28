@@ -21,6 +21,14 @@ subprojects{
     repositories {
         mavenCentral()
     }
+    // 하위 모듈에서 의존성 파일들의 버젼을 중앙관리
+    dependencyManagement {
+
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.1"
+        }
+
+    }
 
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'

@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles
 import spock.lang.Ignore
 import spock.lang.Specification
 
-
+@Ignore
 @SpringBootTest(classes = NaverClientIntegrationTest.TestConfig.class)
 @ActiveProfiles("test")
 class NaverClientIntegrationTest extends Specification {

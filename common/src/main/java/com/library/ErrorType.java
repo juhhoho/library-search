@@ -1,5 +1,8 @@
 package com.library;
 
+import lombok.Getter;
+
+@Getter
 public enum ErrorType {
     EXTERMINAL_API_ERROR("외부 API 호출 에러입니다."),
     UNKNOWN("알 수 없는 에러입니다."),

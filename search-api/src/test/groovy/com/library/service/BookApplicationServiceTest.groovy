@@ -59,4 +59,15 @@ class BookApplicationServiceTest extends Specification {
         }
 
     }
+
+    def "findTop5Query 메서드 호출시 DailyStatQueryService의 findTop5Query가 호출된다."(){
+
+        given:
+        when:
+        bookApplicationService.findTop5Query()
+
+        then:
+        1 * dailyStatQueryService.findTop5Query()
+
+    }
 }

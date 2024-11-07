@@ -1,11 +1,11 @@
 package com.library.service
 
 import com.library.repository.DailyStatRepository
+import org.springframework.data.domain.Pageable
 import spock.lang.Specification
 
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.LocalTime
 
 class DailyStatQueryServiceTest extends Specification {
     DailyStatQueryService dailyStatQueryService
@@ -33,5 +33,19 @@ class DailyStatQueryServiceTest extends Specification {
 
         and:
         response.count() == 10
+    }
+
+    def "findTop5Query 조회 시 조회수 순으로 5개의 쿼리가 {query, count} 포맷으로 반환된다."(){
+        given:
+
+        when:
+        dailyStatQueryService.findTop5Query()
+
+        then:
+        1 * dailyStatRepository.findTopQuery(*_)>>{
+            Pageable pageable ->
+                assert pageable.getPageNumber() == 0
+                assert pageable.getPageSize() == 5
+        }
     }
 }

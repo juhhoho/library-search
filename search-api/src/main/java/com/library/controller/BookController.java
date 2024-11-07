@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -35,4 +36,11 @@ public class BookController {
         log.info("[BookController] find stats query={}, date={}", query, date);
         return bookApplicationService.findQueryCount(query, date);
     }
+
+    @GetMapping("/stats/ranking")
+    public List<StatResponse> findStatRanking(){
+        log.info("[BookController] find top 5 stats");
+        return bookApplicationService.findTop5Query();
+    }
+
 }

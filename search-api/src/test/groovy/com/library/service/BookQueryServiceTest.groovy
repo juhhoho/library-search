@@ -20,10 +20,10 @@ class BookQueryServiceTest extends Specification {
 
         then:
         1 * bookRepository.search(*_) >> {
-            String query, int page, int size ->
+            String query, int start, int display ->
                 assert query == givenQuery
-                assert page == givenStart
-                assert size == givenDisplay
+                assert start == givenStart
+                assert display == givenDisplay
         }
     }
 }

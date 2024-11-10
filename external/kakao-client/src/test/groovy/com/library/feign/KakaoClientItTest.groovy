@@ -1,4 +1,5 @@
-import com.library.feign.NaverClient
+package com.library.feign
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.test.context.SpringBootTest
@@ -8,24 +9,24 @@ import spock.lang.Ignore
 import spock.lang.Specification
 
 @Ignore
-@SpringBootTest(classes = NaverClientIntegrationTest.TestConfig.class)
+@SpringBootTest(classes = KakaoClientItTest.TestConfig.class)
 @ActiveProfiles("test")
-class NaverClientIntegrationTest extends Specification {
+class KakaoClientItTest extends Specification {
     @EnableAutoConfiguration
-    @EnableFeignClients(clients = NaverClient.class)
+    @EnableFeignClients(clients = KakaoClient.class)
     static class TestConfig{}
 
     @Autowired
-    NaverClient naverClient
+    KakaoClient kakaoClient
 
-    def "naver 호출"() {
+    def "kakao 호출"(){
         given:
 
         when:
-        def response = naverClient.search("HTTP", 1, 10)
+        def response = kakaoClient.search("HTTP", 1, 10)
 
         then:
-        response.total == 33
-        print response
+        response.meta().totalCount() == 76
+
     }
 }

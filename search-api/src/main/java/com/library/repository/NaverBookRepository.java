@@ -20,12 +20,13 @@ public class NaverBookRepository implements BookRepository{
     @Override
     public PageResult<SearchResponse> search(String query, int start, int display) {
         NaverBookResponse response = naverClient.search(query, start, display);
-        
+
         List<SearchResponse> responses = response.getItems().stream()
                 .map(this::createResponse)
                 .collect(Collectors.toList());
 
         return new PageResult<>(start, display, response.getTotal(), responses);
+
     }
 
     private SearchResponse createResponse(Item item){

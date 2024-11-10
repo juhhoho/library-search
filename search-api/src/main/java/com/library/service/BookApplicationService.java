@@ -13,6 +13,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
+
 public class BookApplicationService {
     private final BookQueryService bookQueryService;
     private final DailyStatCommandService dailyStatCommandService;

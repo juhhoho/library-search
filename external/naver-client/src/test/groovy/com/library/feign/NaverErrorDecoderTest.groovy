@@ -34,7 +34,7 @@ class NaverErrorDecoderTest extends Specification {
         ApiException exception = thrown()
         verifyAll {
             exception.errorMessage == "error!!"
-            exception.errorType == ErrorType.EXTERMINAL_API_ERROR
+            exception.errorType == ErrorType.EXTERNAL_API_ERROR
             exception.httpStatus == HttpStatus.BAD_REQUEST}
     }
 }
